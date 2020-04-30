@@ -1,0 +1,12 @@
+asgiref==3.2.7
+Django==3.0.4
+get==2019.4.13
+gunicorn==20.0.4
+post==2019.4.13
+public==2019.4.13
+pytz==2019.3
+query-string==2019.4.13
+request==2019.4.13
+requests==2.18.4
+requests-unixsocket==0.1.5
+sqlparse==0.3.1
