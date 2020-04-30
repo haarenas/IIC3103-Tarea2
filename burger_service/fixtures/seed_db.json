@@ -16,6 +16,30 @@
     }
   },
   {
+    "model": "burger_service.Ingrediente",
+    "pk": 3,
+    "fields": {
+      "nombre": "Cebolla morada",
+      "descripcion": "Fresca cebolla morada cortada en rodajas"
+    }
+  },
+  {
+    "model": "burger_service.Ingrediente",
+    "pk": 4,
+    "fields": {
+      "nombre": "Cebolla caramelizada",
+      "descripcion": "Finas cebollas caramelzadas"
+    }
+  },
+  {
+    "model": "burger_service.Ingrediente",
+    "pk": 5,
+    "fields": {
+      "nombre": "Salsa tartara",
+      "descripcion": "Exquisita salsa tartara, preparada con los mejores ingredientes"
+    }
+  },
+  {
     "model": "burger_service.Hamburguesa",
     "pk": 1,
     "fields": {
@@ -29,8 +53,18 @@
     "model": "burger_service.Hamburguesa",
     "pk": 2,
     "fields": {
+      "nombre": "Bacon lover",
+      "precio": 4600,
+      "descripcion": "Hamburguesa envuelta en tocino, acompañado de queso, lechuga y tomate",
+      "imagen": "https://image.shutterstock.com/image-photo/bacon-burger-beef-patty-on-260nw-215936923.jpg"
+    }
+  },
+  {
+    "model": "burger_service.Hamburguesa",
+    "pk": 3,
+    "fields": {
       "nombre": "La vegetariana",
-      "precio": 2100,
+      "precio": 3000,
       "descripcion": "Hamburguesa de soya, lechuga y tomate",
       "imagen": "https://www.cocina33.com/recetas/_resampled/hamburguesa-de-soya-con-lechuga-lisa-y-tomate-SetWidth620.jpg"
     }

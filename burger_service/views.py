@@ -123,7 +123,25 @@ class ingredienteList(APIView):
             return Response({'Message': 'Input invalido', 'Status': 400, 'Body': serializer.errors}, status=400)
 
     def delete(self, request, pk=None):
-        pass
+        if pk:
+            if pk.isdigit():
+                pk = int(pk)
+            else:
+                return Response({'Message': 'id invalido', 'Status': 400}, status=400)
+            
+            hamburguesas = Hamburguesa.objects.filter(ingredientes = pk)
+            serializer = hamburguesaSerializer(hamburguesas, many=True)
+            
+            if serializer.data:
+                return Response({'Message': 'Ingrediente no se puede borrar, se encuentra presente en una o mas hamburguesas', 'Status': 409}, status=409)
+                
+            ingrediente = Ingrediente.objects.filter(pk = pk)
+            ingrediente.delete()
+            return Response({'Message': 'Ingrediente eliminado', 'Status': 200}, status=200)
+
+        else:
+            return Response({'Message': 'id invalido', 'Status': 400}, status=400)
+        
 
 
 class hamburgesaIngrediente(APIView):
@@ -166,7 +184,7 @@ class hamburgesaIngrediente(APIView):
         hamburguesa = Hamburguesa.objects.get(pk=pk)
         ingrediente = Ingrediente.objects.get(pk=pk2)
 
-        if Hamburguesa.objects.filter(ingredientes = pk2):
+        if Hamburguesa.objects.filter(ingredientes = pk2, pk = pk):
             return Response({'Message': 'Hamburguesa ya contiene el ingrediente','Status': 400}, status=400)
 
         hamburguesa.ingredientes.add(ingrediente)

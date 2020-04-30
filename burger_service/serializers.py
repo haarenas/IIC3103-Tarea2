@@ -5,6 +5,7 @@ class hamburguesaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hamburguesa
         fields = ['id', 'nombre', 'precio', 'descripcion', 'imagen', 'ingredientes']
+        #fields = ['id', 'nombre', 'precio', 'descripcion', 'imagen', 'ingredientes']
         read_only_fields = ['id', 'ingredientes']
 
 class ingredienteSerializer(serializers.ModelSerializer):
