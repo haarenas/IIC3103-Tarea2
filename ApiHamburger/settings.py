@@ -25,7 +25,7 @@ SECRET_KEY = '3+=jh9%fjnuxp8(abp$)*6h--kb_2wnffdu5n6h5dkdfklckp@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['burger-service-api.herokuapp.com','localhost']
 
 
 # Application definition
