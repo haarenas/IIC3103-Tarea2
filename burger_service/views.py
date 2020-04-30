@@ -35,7 +35,7 @@ class hamburgesaList(APIView):
                 hamburguesas = Hamburguesa.objects.get(pk=pk)
                 serializer = hamburguesaSerializer(hamburguesas)
                 for inx2, ingr in enumerate(serializer.data['ingredientes']):
-                    serializer.data['ingredientes'][inx2] = {"path": f"https://hamburgueseria.com/ingrediente/{ingr}"}
+                    serializer.data['ingredientes'][inx2] = {"path": f"http://burger-service-api.herokuapp.com/ingrediente/{ingr}"}
                 return Response({'Message': 'Operacion exitosa', 'Status': 200,'Body': serializer.data}, status=200)
             else:
                 return Response({'Message': f'Hamburguesa con id {pk} no existe','Status': 404}, status=404)
@@ -44,7 +44,7 @@ class hamburgesaList(APIView):
             serializer = hamburguesaSerializer(hamburguesas, many=True)
             for inx,burger in enumerate(serializer.data):
                 for inx2, ingr in enumerate(burger['ingredientes']):
-                    serializer.data[inx]['ingredientes'][inx2] = {"path": f"https://hamburgueseria.com/ingrediente/{ingr}"}
+                    serializer.data[inx]['ingredientes'][inx2] = {"path": f"http://burger-service-api.herokuapp.com/ingrediente/{ingr}"}
             return Response({'Message': 'Resultados obtenidos', 'Status': 200, 'Body': serializer.data}, status=200)
     
     def post(self, request):
@@ -156,7 +156,7 @@ class hamburgesaIngrediente(APIView):
                 hamburguesas = Hamburguesa.objects.get(pk=pk)
                 serializer = hamburguesaSerializer(hamburguesas)
                 for inx2, ingr in enumerate(serializer.data['ingredientes']):
-                    serializer.data['ingredientes'][inx2] = {"path": f"https://hamburgueseria.com/ingrediente/{ingr}"}
+                    serializer.data['ingredientes'][inx2] = {"path": f"http://burger-service-api.herokuapp.com/ingrediente/{ingr}"}
                 return Response({'Message': 'Operacion exitosa', 'Status': 200,'Body': serializer.data}, status=200)
             else:
                 return Response({'Message': f'Hamburguesa con id {pk} no existe','Status': 404}, status=404)
