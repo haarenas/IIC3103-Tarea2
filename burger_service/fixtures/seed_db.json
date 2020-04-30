@@ -1,0 +1,38 @@
+[
+  {
+    "model": "burger_service.Ingrediente",
+    "pk": 1,
+    "fields": {
+      "nombre": "Queso Cheddar",
+      "descripcion": "Rico y cremoso queso cheddar"
+    }
+  },
+  {
+    "model": "burger_service.Ingrediente",
+    "pk": 2,
+    "fields": {
+      "nombre": "Pepinillo",
+      "descripcion": "Pepinillos cortados en rodajas"
+    }
+  },
+  {
+    "model": "burger_service.Hamburguesa",
+    "pk": 1,
+    "fields": {
+      "nombre": "Cheese Hamburger",
+      "precio": 1990,
+      "descripcion": "Hamburguesa con queso y lechuga",
+      "imagen": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cheeseburger.jpg/800px-Cheeseburger.jpg"
+    }
+  },
+  {
+    "model": "burger_service.Hamburguesa",
+    "pk": 2,
+    "fields": {
+      "nombre": "La vegetariana",
+      "precio": 2100,
+      "descripcion": "Hamburguesa de soya, lechuga y tomate",
+      "imagen": "https://www.cocina33.com/recetas/_resampled/hamburguesa-de-soya-con-lechuga-lisa-y-tomate-SetWidth620.jpg"
+    }
+  }
+]
