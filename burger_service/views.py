@@ -36,7 +36,7 @@ class hamburgesaList(APIView):
                 serializer = hamburguesaSerializer(hamburguesas)
                 for inx2, ingr in enumerate(serializer.data['ingredientes']):
                     serializer.data['ingredientes'][inx2] = {"path": f"http://burger-service-api.herokuapp.com/ingrediente/{ingr}"}
-                return Response({'Message': 'Operacion exitosa', 'Status': 200,'Body': serializer.data}, status=200)
+                return Response(serializer.data, status=200)
             else:
                 return Response({'Message': f'Hamburguesa con id {pk} no existe','Status': 404}, status=404)
         else:
@@ -45,14 +45,14 @@ class hamburgesaList(APIView):
             for inx,burger in enumerate(serializer.data):
                 for inx2, ingr in enumerate(burger['ingredientes']):
                     serializer.data[inx]['ingredientes'][inx2] = {"path": f"http://burger-service-api.herokuapp.com/ingrediente/{ingr}"}
-            return Response({'Message': 'Resultados obtenidos', 'Status': 200, 'Body': serializer.data}, status=200)
+            return Response(serializer.data, status=200)
     
     def post(self, request):
         serializer = hamburguesaSerializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save()
-            return Response({'Message': 'Hamburguesa creada', 'Status': 201, 'Body': serializer.data}, status=201)
+            return Response(serializer.data, status=201)
         else:
             return Response({'Message': 'Input invalido', 'Status': 400, 'Body': serializer.errors}, status=400)
 
@@ -105,20 +105,20 @@ class ingredienteList(APIView):
             if Ingrediente.objects.filter(pk=pk).exists():
                 ingredientes = Ingrediente.objects.get(pk=pk)
                 serializer = ingredienteSerializer(ingredientes)
-                return Response({'Message': 'Operacion exitosa', 'Status': 200, 'Body': serializer.data}, status=200)
+                return Response(serializer.data, status=200)
             else:
                 return Response({'Message': 'Ingrediente inexistente', 'Status': 404}, status=404)
         else:
             ingredientes = Ingrediente.objects.all()
             serializer = ingredienteSerializer(ingredientes, many=True)
-            return Response({'Message': 'Resultados obtenidos', 'Status': 200, 'Body': serializer.data}, status=200)
+            return Response(serializer.data, status=200)
     
     def post(self, request):
         serializer = ingredienteSerializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save()
-            return Response({'Message': 'Ingrediente creado', 'Status': 201, 'Body': serializer.data}, status=201)
+            return Response(serializer.data, status=201)
         else:
             return Response({'Message': 'Input invalido', 'Status': 400, 'Body': serializer.errors}, status=400)
 
@@ -157,13 +157,13 @@ class hamburgesaIngrediente(APIView):
                 serializer = hamburguesaSerializer(hamburguesas)
                 for inx2, ingr in enumerate(serializer.data['ingredientes']):
                     serializer.data['ingredientes'][inx2] = {"path": f"http://burger-service-api.herokuapp.com/ingrediente/{ingr}"}
-                return Response({'Message': 'Operacion exitosa', 'Status': 200,'Body': serializer.data}, status=200)
+                return Response(serializer.data, status=200)
             else:
                 return Response({'Message': f'Hamburguesa con id {pk} no existe','Status': 404}, status=404)
         else:
             hamburguesas = Hamburguesa.objects.all()
             serializer = hamburguesaSerializer(hamburguesas, many=True)
-            return Response({'Message': 'Resultados obtenidos', 'Status': 200, 'Body': serializer.data}, status=200)
+            return Response(serializer.data, status=200)
     
     def put(self, request, pk=None, pk2=None):
         if not pk or not pk.isdigit():
