@@ -27,8 +27,13 @@ urlpatterns = [
     #path('', include(router.urls)),
     #path('admin/', admin.site.urls),
     path('hamburguesa/', views.hamburgesaList.as_view()),
+    path('hamburguesa', views.hamburgesaList.as_view()),
     path('hamburguesa/<pk>/', views.hamburgesaList.as_view()),
+    path('hamburguesa/<pk>', views.hamburgesaList.as_view()),
     path('hamburguesa/<pk>/ingrediente/<pk2>/', views.hamburgesaIngrediente.as_view()),
+    path('hamburguesa/<pk>/ingrediente/<pk2>', views.hamburgesaIngrediente.as_view()),
     path('ingrediente/', views.ingredienteList.as_view()),
+    path('ingrediente', views.ingredienteList.as_view()),
     path('ingrediente/<pk>/', views.ingredienteList.as_view()),
+    path('ingrediente/<pk>', views.ingredienteList.as_view()),
 ]
