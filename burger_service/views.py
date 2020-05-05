@@ -85,6 +85,8 @@ class hamburgesaList(APIView):
                 serializer = hamburguesaSerializer(hamburguesas, data=request.data, partial=True)
                 if serializer.is_valid():
                     serializer.save()
+                    for inx2, ingr in enumerate(serializer.data['ingredientes']):
+                        serializer.data['ingredientes'][inx2] = {"path": f"http://burger-service-api.herokuapp.com/ingrediente/{ingr}"}
                     return Response(serializer.data, status=200)
                 else:
                     return Response({'Message': 'El parametro no se puede modificar', 'Status': 400}, status=400)
