@@ -85,7 +85,7 @@ class hamburgesaList(APIView):
                 serializer = hamburguesaSerializer(hamburguesas, data=request.data, partial=True)
                 if serializer.is_valid():
                     serializer.save()
-                    return Response({'Message': 'Hamburguesa actualizada', 'Status': 200}, status=200)
+                    return Response(serializer.data, status=200)
                 else:
                     return Response({'Message': 'El parametro no se puede modificar', 'Status': 400}, status=400)
             else:
